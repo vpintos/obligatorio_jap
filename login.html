@@ -33,18 +33,38 @@
       max-width: 330px;
       padding: 15px;
       margin: auto;
+      background-color: rgb(255, 245, 246) ; 
+      box-shadow:0.3em 0.3em 0 0 rgba(0,0,0,.1);
+    }
+     h2 {
+       color: #d61c6c;
+     }
+
+    button{
+      background-color: #d61c6c;
     }
   </style>
 </head>
 
-<body class="text-center">
+<body>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+      <form name= "form" class = "signin" method="POST" action="index.html">
+      <h2>Ingresa al sitio</h2>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Correo Electrónico</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
+        <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo, estás seguro :).</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Contraseña</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" onkeydown= "return soloNumeros()">
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="validate()" >Ingresar</button>
+    </form>
   </div>
 
   <script src="js/init.js"></script>
