@@ -42,7 +42,7 @@ var getJSONData = function(url){
 
 
 var parts = location.pathname.split('/');
-if(parts[parts.length - 1] == 'obligatorio_jap') {
+if(parts[parts.length - 1] == '') {
     window.location.replace('login.html');
 }
 
