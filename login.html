@@ -25,51 +25,58 @@
       align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      background-color: #f5f5f5;
+      background-color: pink;
     }
 
     .signin {
       width: 100%;
-      max-width: 330px;
+      max-width: 350px;
       padding: 15px;
       margin: auto;
-      background-color: rgb(255, 245, 246) ; 
+      background-color: #f5f5f5 ; 
       box-shadow:0.3em 0.3em 0 0 rgba(0,0,0,.1);
     }
      h2 {
        color: #d61c6c;
-       padding-top: 0.2em;
+       padding-top: 0.5em;
+       font-size: x-large;
      }
 
-    button{
-      background-color: #d61c6c;
-    }
+    .signin #email_error, .signin #password_error, .signin #password_numero{
+      
+       display: none;
+
+     }
+  
   </style>
 </head>
 
 <body>
   <div class="container p-5">
-      <form name= "form" class = "signin" method="POST" action="index.html">
-       <img src="img/login.png" alt="login" width="300" /> 
+      <form name= "form" class = "signin" method="POST" action="index.html"  onsubmit = "return validated()">
+       <img src="img/login.png" alt="login" width="320" /> 
        <br/>
       <h2>Ingresa al sitio</h2>
+      <hr/>
       <div class="form-group">
         <label for="exampleInputEmail1">Correo Electrónico</label>
-        <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
-        <div name= "email_error" class="alert alert-danger" role="alert"> Debes ingresar un correo electrónico. </div>
+        <input  name="email" type="email" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
+        <div id= "email_error" class="alert-danger" role="alert" style="text-align: center;">Debes ingresar un correo electrónico correcto. <br></div>
+        
         <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo, estás seguro :).</small>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Contraseña</label>
-        <input  name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" onkeydown= "return soloNumeros()">
-        <p name= "password_error" class="alert alert-danger" role="alert"> Debes ingresar una contraseña. </p>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+        <div id= "password_error" class="alert-danger" role="alert" style="text-align: center;">Debes ingresar una contraseña. </div>
+        <div id= "password_numero" class="alert-danger" role="alert" style="text-align: center;">Debes ingresar más de 8 carácteres. </div>
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1" class="checked">Recordarme</label>
       </div>
       <br/>
-      <button type="submit"  onclick="validate()" class="btn btn-danger"> Ingresar</button>
+      <button type="submit" class="btn btn-danger"> Ingresar</button>
     </form>
   </div>
 
