@@ -15,10 +15,11 @@ function showProducts(array) {
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + `</h4
-                        <small class="text-muted">` + product.soldCount + ` artículos</small>
+                        <h4 class="mb-1">`+ product.name + `</h4>
+                        <small class="text-danger">` + product.soldCount + ` artículos vendidos</small>
                     </div>
                     <p> `+ product.description + `</p>
+                    <small class="alert-success">` + product.cost +' '+ product.currency + `</small>
                 </div>
             </div>
         </div>

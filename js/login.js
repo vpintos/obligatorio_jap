@@ -1,3 +1,4 @@
+
 function validate() {
     var x = document.forms["form"]["exampleInputEmail1"].value;
     if (x == "" || x == null) {
