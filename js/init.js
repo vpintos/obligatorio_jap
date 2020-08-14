@@ -41,12 +41,16 @@ var getJSONData = function(url){
 }
 
 
+var parts = location.pathname.split('/');
+if(parts[parts.length - 1] == 'index.html') {
+    window.location.replace('login.html');
+}
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-if(!sessionStorage.getItem('usuario')){
-	window.location.replace('login.html');
-}
+
 });
