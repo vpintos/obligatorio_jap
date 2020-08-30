@@ -4,6 +4,7 @@ var user = document.forms["form"]["user"];
 var email = document.forms["form"]["email"];
 var password = document.forms["form"]["password"];
 
+
 var user_error = document.getElementById("user_error");
 var email_error = document.getElementById("email_error");
 var password_error = document.getElementById("password_error");
@@ -90,16 +91,7 @@ function renderButton() {
   });
 }
 
-function validarForm(){ 
-  var nombre = document.getElementById("nombre").value; 
-  var apellido = document.getElementById("apellido").value;
-  var miStorage = window.sessionStorage; 
-  miStorage.setItem("keyNombre", nombre); 
-  miStorage.setItem("keyApellido", apellido); 
-  
-  window.location.href = "print.html"
-  
-  }
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

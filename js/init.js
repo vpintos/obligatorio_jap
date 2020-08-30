@@ -47,10 +47,15 @@ if(parts[parts.length - 1] == '') {
 }
 
 
-
+miStorage = window.sessionStorage; 
+function printUserNav(){ 
+  
+  var printUser = document.getElementById("exampleInputUser").value;
+  sessionStorage.setItem("keyUser", printUser);  
+ }
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-
+document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser")
 });
