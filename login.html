@@ -16,29 +16,32 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
+
+      :root {
+  --gradient: linear-gradient(90deg, #5692c9, #41b8b0, #65ba63, #f0b04e, #f1613a,#ef4861) ;
+}
     html, body{
       height: 100%;
-      background: linear-gradient(white, pink, orange) 50%/ 5em;
-  animation: blinds 1s ease-in-out infinite alternate;
-    }
+}
 
-    body {
+body {
       display: -ms-flexbox;
       display: flex;
-  
-      background-color: pink;
+      background: #ddd ;
+      background-size: 200%;
+      background-image: var(--gradient);
+      animation: blinds 20s infinite alternate;
     }
 
-  
 @keyframes blinds {
-  to {
-    background-image: linear-gradient(white, pink, orange);
-  }
+  0% {background-position: left}
+  50% {background-position: right}
+  100% {background-position: left}
 }
     #fondo{
       width: 100%;
       position: absolute;
-      display: flex;
+      display:inherit;
       -ms-flex-align: start !important;
       align-items: start !important;
     } 
@@ -52,9 +55,8 @@
       box-shadow: 0 0 0.3em 0.3em  rgba(0,0,0,.1);
       position: relative;
       top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-      
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
     }
      h2 {
        color: #d61c6c;
@@ -70,8 +72,8 @@
   
   </style>
 </head>
-<div id="fondo"><img src= "img/cover_back.png" class="img-fluid align-top !important"/></div>
-<body style="background: linear-gradient(white, pink, orange);">
+<div id="fondo"><img src= "img/login.png" class="align-top !important"/></div>
+<body >
   
   <div class="container p-5">
       <form id="form" name= "form" class = "signin" method="GET" action="https://vpintos.github.io/obligatorio_jap/index.html"  onsubmit = "return validated()">
