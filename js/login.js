@@ -88,7 +88,7 @@ function onFailure(error) {
   console.log(error);
 }
 function renderButton() {
-  gapi.signin2.render('my-signin2', {
+  gapi.signin2.render('g-signin2', {
     'scope': 'profile email',
     'max-width': 400,
     'height': 50,
