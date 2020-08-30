@@ -90,8 +90,9 @@ function onFailure(error) {
 function renderButton() {
   gapi.signin2.render('my-signin2', {
     'scope': 'profile email',
-    'width': 240,
+    'max-width': 400,
     'height': 50,
+    'align' : center.
     'longtitle': true,
     'theme': 'dark',
     'onsuccess': onSuccess,
