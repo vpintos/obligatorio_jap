@@ -2,6 +2,8 @@ const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_ASC_BY_PROD_COST = "Costo ASC.";
 const ORDER_DESC_BY_PROD_COST = "Costo DESC.";
+const ORDER_ASC_BY_PROD_SOLD = "Relevancia";
+
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
@@ -40,8 +42,16 @@ function sortProducts(criteria, array){
             if ( aCount > bCount ){ return 1; }
             return 0;
         });
-    }
+    }else if (criteria === ORDER_ASC_BY_PROD_SOLD){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
 
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    }
     return result;
 }
 
@@ -118,6 +128,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("sortDESCByCost").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_PROD_COST);
     });
+
+    document.getElementById("sortASCByRelevance").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_ASC_BY_PROD_SOLD);
+    });
+
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
