@@ -64,7 +64,7 @@ body {
        font-size: x-large;
      }
 
-    .signin #email_error, .signin #password_error, .signin #password_numero{
+     .signin #user_error, .signin #email_error, .signin #password_error, .signin #password_numero{
       
        display: none;
 
@@ -80,6 +80,10 @@ body {
       <h2>Ingresa al sitio</h2>
       <hr/>
       <div class="form-group">
+        <label for="exampleInputUser">Usario</label>
+        <input  name="user" type="text" class="form-control"  id="exampleInputUser"  placeholder="Ingresa tu Usuario">
+        <div id= "user_error" class="alert-danger" role="alert" style="text-align: center;">Debes ingresar un usuario. </div><br>
+
         <label for="exampleInputEmail1">Correo Electrónico</label>
         <input  name="email" type="email" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
         <div id= "email_error" class="alert-danger" role="alert" style="text-align: center;">Debes ingresar un correo electrónico correcto. <br></div>

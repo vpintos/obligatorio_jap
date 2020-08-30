@@ -1,18 +1,28 @@
+
+
+
+var user = document.forms["form"]["user"];
 var email = document.forms["form"]["email"];
 var password = document.forms["form"]["password"];
 
+var user_error = document.getElementById("user_error");
 var email_error = document.getElementById("email_error");
 var password_error = document.getElementById("password_error");
 var password_numero = document.getElementById("password_numero");
 
-
+user.addEventListener("input", user_Verify);
 email.addEventListener("input", email_Verify);
 password.addEventListener("input", password_Verify);
-
 
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 function validated() {
+  if (user.value.length == 0) {
+    user.style.border = "1px solid red";
+    user_error.style.display = "block";
+    user.focus();
+    return false; 
+  }
     if (email.value.length == 0 || !email.value.match(regExp)) {
       email.style.border = "1px solid red";
       email_error.style.display = "block";
@@ -36,7 +46,13 @@ function validated() {
     
 }
 
-
+function user_Verify() { 
+  if (user.value.length >= 1) {
+    user.style.border = "1px solid silver";
+    user_error.style.display = "none";
+    return true;
+    }
+}
 
 function email_Verify() {
  
