@@ -1,4 +1,13 @@
-
+function validarForm(){ 
+  var nombre = document.getElementById("nombre").value; 
+  var apellido = document.getElementById("apellido").value;
+  var miStorage = window.sessionStorage; 
+  miStorage.setItem("keyNombre", nombre); 
+  miStorage.setItem("keyApellido", apellido); 
+  
+  window.location.href = "print.html"
+  
+  }
 
 
 var user = document.forms["form"]["user"];
