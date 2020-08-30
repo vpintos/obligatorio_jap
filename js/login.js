@@ -1,13 +1,3 @@
-function validarForm(){ 
-  var nombre = document.getElementById("nombre").value; 
-  var apellido = document.getElementById("apellido").value;
-  var miStorage = window.sessionStorage; 
-  miStorage.setItem("keyNombre", nombre); 
-  miStorage.setItem("keyApellido", apellido); 
-  
-  window.location.href = "print.html"
-  
-  }
 
 
 var user = document.forms["form"]["user"];
@@ -99,6 +89,18 @@ function renderButton() {
     'onfailure': onFailure
   });
 }
+
+function validarForm(){ 
+  var nombre = document.getElementById("nombre").value; 
+  var apellido = document.getElementById("apellido").value;
+  var miStorage = window.sessionStorage; 
+  miStorage.setItem("keyNombre", nombre); 
+  miStorage.setItem("keyApellido", apellido); 
+  
+  window.location.href = "print.html"
+  
+  }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
