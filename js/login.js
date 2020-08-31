@@ -92,12 +92,6 @@ function renderButton() {
 }
 
 
-miStorage = window.sessionStorage; 
-function printUserNav(){ 
-  
-  var printUser = document.getElementById("exampleInputUser").value;
-  sessionStorage.setItem("keyUser", printUser); 
-}
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
