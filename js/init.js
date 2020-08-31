@@ -52,5 +52,5 @@ miStorage = window.sessionStorage;
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser")
+document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
 });
