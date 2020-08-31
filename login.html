@@ -75,7 +75,7 @@ body {
 <body >
   
   <div class="container p-5">
-      <form id="form" name= "form" class = "signin" method="GET" action="https://vpintos.github.io/obligatorio_jap/index.html"  onsubmit = "return validated()">
+      <form id="form" name= "form" class = "signin" method="GET" action="https://vpintos.github.io/obligatorio_jap/index.html"  onsubmit = "return validated() ; printUserNav()">
       <h2>Ingresa al sitio</h2>
       <hr/>
       <div class="form-group">
@@ -100,7 +100,7 @@ body {
         <label class="form-check-label" for="exampleCheck1" class="checked">Recordarme</label>
       </div>
       <br/>
-      <button type="submit" class="btn btn-primary btn-lg btn-block btn-danger" onclick="printUserNav()"> Ingresar</button> 
+      <button type="submit" class="btn btn-primary btn-lg btn-block btn-danger" > Ingresar</button> 
       <br/>    
       <div  class="g-signin2"  data-longtitle="true" data-max-width="450"></div>
     
