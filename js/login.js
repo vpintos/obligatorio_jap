@@ -4,7 +4,6 @@ var user = document.forms["form"]["user"];
 var email = document.forms["form"]["email"];
 var password = document.forms["form"]["password"];
 
-
 var user_error = document.getElementById("user_error");
 var email_error = document.getElementById("email_error");
 var password_error = document.getElementById("password_error");
