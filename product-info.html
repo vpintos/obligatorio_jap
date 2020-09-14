@@ -10,9 +10,65 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+  
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+.rating { 
+  border: none;
+  float: left;
+}
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+.rating > input:checked ~ label, 
+.rating:not(:checked) > label:hover, 
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+.rating2 { 
+  border: none;
+  float: right;
+}
+.rating2  input { display: none; } 
+.rating2 > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+  color: #FFD700;
+}
+.rating2 > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+
+form #comment_error{
+      
+      display: none;
+
+    }
+</style>
+
 </head>
 
 <body>
@@ -26,14 +82,74 @@
       <a class="py-2 d-none d-md-inline-block" id="printUser" href="my-profile.html">Usuario</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <img src="img/prod1.jpg" width="200px"/>
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
+          seleccionado previamente, siempre se visualizará la presente: <strong> Chevrolet Onix Joy </strong>.</p>
+      </div>
+      <h3 id="productName"> </h3>
+      <h4 id="productCost" class="text-success"></h4>
+      <hr class="my-3">
+      <dl>
+        <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Cantidad de productos vendidos</dt>
+        <dd>
+          <p id="productSoldCount"></p>
+        </dd>
+
+        <dt>Categoría</dt>
+        <dd>
+          <p id="productCategory"></p>
+        </dd>
+
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+          </div>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="container p-5">
+      <div class="container">
+      <form id= "form" method="GET"  onsubmit = "return validated()">
+        <h3>Nuevo comentario</h3>
+        <div class="form-group">
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Excelente- 5 stars"></label>
+            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Muy bueno - 4 stars"></label>
+            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Bueno - 3 stars"></label>
+            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Malo - 2 stars"></label>
+            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Muy malo - 1 star"></label>
+        </fieldset>
+        <br><br>
+          <label for="comment">Ingresa tu comentario:</label>
+          <textarea name="comment"class="form-control" rows="5" id="comment"></textarea>
+          <div id= "comment_error" class="alert-danger" role="alert" >Debes ingresar un comentario. </div>
+        </div> 
+        <button type="submit" class="btn btn-secondary">Envíar</button>
+      </form>
     </div>
   </div>
+     
+    </div>
+    <div class="container p-5">
+      <div class="container">
+        <h3>Comentarios</h3>
+    <div id="productComment" ></div>
+    </div>
+    </div>
+
+   
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
