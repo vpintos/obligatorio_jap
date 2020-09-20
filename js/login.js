@@ -4,7 +4,6 @@ var user = document.forms["form"]["user"];
 var email = document.forms["form"]["email"];
 var password = document.forms["form"]["password"];
 
-
 var user_error = document.getElementById("user_error");
 var email_error = document.getElementById("email_error");
 var password_error = document.getElementById("password_error");
@@ -79,20 +78,15 @@ function onFailure(error) {
   console.log(error);
 }
 function renderButton() {
-  gapi.signin2.render('g-signin2', {
+  gapi.signin2.render('my-signin2', {
     'scope': 'profile email',
-    'max-width': 400,
+    'width': 240,
     'height': 50,
-    'align' : center.
-    'longtitle': true,
     'theme': 'dark',
     'onsuccess': onSuccess,
     'onfailure': onFailure
   });
 }
-
-
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los

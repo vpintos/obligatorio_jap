@@ -1,5 +1,6 @@
 var product = [];
 var comments = [];
+var related = [];
 
 var coment = document.forms["form"]["comment"];
 
@@ -14,7 +15,25 @@ if (comment.value.length == 0) {
   }
 }
 
-function showImagesGallery(array){
+function showImagesGallery1(array){
+
+    let htmlContentToAppend = "";
+
+    for(let i = 0; i < 1; i++){
+        let imageSrc = array[i];
+
+        htmlContentToAppend += `
+    
+        <img class="d-block w-100" src="` + imageSrc + `" >
+    `
+
+    document.getElementById("productImagesGallery1").innerHTML = htmlContentToAppend;
+       
+        
+    }
+}
+
+function showImagesGallery2(array){
 
     let htmlContentToAppend = "";
 
@@ -22,15 +41,13 @@ function showImagesGallery(array){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-        
-        <div class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-        </div>
-    </div>
+        <div class="carousel-item">
+        <img class="d-block w-100" src="` + imageSrc + `" >
+      </div>
+    
     `
 
-    document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+    document.getElementById("productImagesGallery2").innerHTML = htmlContentToAppend;
        
         
     }
@@ -76,7 +93,37 @@ function showProductComments(array) {
 }
 
 
+function showRelatedProducts(array) {
 
+    let htmlContentToAppend = "";
+
+    for (let e = 0; e < array.length; e++) {
+
+    for (let i = 0; i < relatedProductsArray.length; i++) {
+        if (e === relatedProductsArray[i]){
+        let related = array[e];
+    
+            htmlContentToAppend += `
+       
+            <a href="product-info.html" class="card shadow-sm custom-card col-lg-3 col-md-4 col-6  mb-3">
+            
+                <div class="d-block mb-4 h-100">
+                    <div class="flex">
+                    <img src="` + related.imgSrc + `" alt="` + related.description + `" class="img-fluid img-thumbnail">
+                        <h4 class="mb-1">`+ related.name + `</h4>
+                    </div>
+                    <p> `+ related.description + `</p>
+                    <small class="alert-success">` + related.cost +' '+ related.currency + `</small>
+                </div>
+            </div>
+       
+            <a>
+        `
+      }
+        document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
+    }
+}
+} 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -98,9 +145,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productSoldCountHTML.innerHTML = product.soldCount;
             productCategoryHTML.innerHTML = product.category;
             productCostHTML.innerHTML= product.cost + product.currency;
+            relatedProductsArray = product.relatedProducts;
             
             //Muestro las categorías ordenadas
-            showImagesGallery(product.images);
+            showImagesGallery1(product.images);
+            showImagesGallery2(product.images);
+
         }
     });
 });
@@ -118,3 +168,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 });
 
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            related = resultObj.data;
+            
+            //Muestro las categorías ordenadas
+            showRelatedProducts(related) ;
+        }
+    });
+});
