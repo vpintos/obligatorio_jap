@@ -104,25 +104,25 @@ function showRelatedProducts(array) {
         let related = array[e];
     
             htmlContentToAppend += `
-       
-            <a href="product-info.html" class="card shadow-sm custom-card col-lg-3 col-md-4 col-6  mb-3">
-            
-                <div class="d-block mb-4 h-100">
-                    <div class="flex">
-                    <img src="` + related.imgSrc + `" alt="` + related.description + `" class="img-fluid img-thumbnail">
-                        <h4 class="mb-1">`+ related.name + `</h4>
+        
+                    <a href="product-info.html" class="card shadow-sm custom-card col-lg-3 col-md-4 col-6  mb-3">
+                    
+                        <div class="d-block mb-4 h-100">
+                            <div class="flex">
+                            <img src="` + related.imgSrc + `" alt="` + related.description + `" class="img-fluid img-thumbnail">
+                                <h4 class="mb-1">`+ related.name + `</h4>
+                            </div>
+                            <p> `+ related.description + `</p>
+                            <small class="alert-success">` + related.cost +' '+ related.currency + `</small>
+                        </div>
                     </div>
-                    <p> `+ related.description + `</p>
-                    <small class="alert-success">` + related.cost +' '+ related.currency + `</small>
-                </div>
-            </div>
-       
-            <a>
-        `
-      }
-        document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
+            
+                    <a>
+                `
+            }
+                document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
+         }
     }
-}
 } 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
