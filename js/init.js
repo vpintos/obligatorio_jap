@@ -46,13 +46,15 @@ if(parts[parts.length - 1] == '') {
     window.location.replace('login.html');
 }
 
-
 miStorage = window.sessionStorage; 
 function printUserNav(){ 
   
   var printUser = document.getElementById("exampleInputUser").value;
   sessionStorage.setItem("keyUser", printUser); 
 }
+ 
+
+
  
 function deleteUser(){
   sessionStorage.removeItem("keyUser"); 
@@ -63,5 +65,5 @@ function deleteUser(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
-});
+  document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
+  });
