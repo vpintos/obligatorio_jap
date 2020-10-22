@@ -21,6 +21,13 @@
       -ms-user-select: none;
       user-select: none;
     }
+    input.caja {
+        width: 3em;
+        text-align: center;
+        font-size: 1em;
+          padding: .25em;
+      margin: 1em .5em 0 0;
+    }
 
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
@@ -51,14 +58,89 @@
       <a class="py-2 d-none d-md-inline-block"  ></a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+ 
+  <div class="text-center p-4">
+    <h2>Mi Carrito</h2>
+    <p class="lead">Revisa tus compras, unidades, métodos de pago y envío.</p>
+    <br/>
+</div>
+
+<div class="container">
+  <div class="row list-gruop-item ml-1 mr-1 bg-light">
+    <div class="col-2" >Detalle</div>
+    <div class="col-7" >Unidades</div>
+    <div class="col-2" >Total</div>
     </div>
+    <div id="cart-product"></div>
+    <div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-2">
+          </div>
+          <div class="col-7">
+          </div>                                   
+          <div class="col-2 justify-content-end align-self-center">
+            <p class="text-dark">Subtotal:</p>
+          </div> 
+          <div class="col-1 justify-content-end align-self-center">
+            <p> $</p>
+          </div>     
+      </div>
+          <div class="row bg-light">
+              <div class="col-2">
+                <p>Tipo de envío:</p>
+              </div>
+              <div class="col-7">
+                  <div class="d-flex w-100 justify-content-between">
+                    <div class="input-group-text">
+                      <input type="radio" aria-label="Standar"> Standar (12 a 15 días)</input>
+                      </div>
+                      <div class="input-group-text">
+                        <input type="radio" aria-label="Express"> Express (5-8 días)</input>
+                        </div>
+                        <div class="input-group-text">
+                          <input type="radio" aria-label="Premium"> Premium (2-5 días)</input>
+                          </div>
+                  </div>
+              </div>                                   
+              <div class="col-2 justify-content-end align-self-center">
+                <p class="text-dark">Costo de envío:</p>
+              </div> 
+              <div class="col-1 justify-content-end align-self-center">
+                <p>$40</p>
+              </div>     
+          </div>
+       
+          <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-7">
+            </div>                                   
+            <div class="col-2 justify-content-end align-self-center">
+              <h6 class="font-weight-bold">Total:</h6>
+            </div> 
+            <div class="col-1 justify-content-end align-self-center">
+              <p>$</p>
+            </div>     
+        </div>
+
+      </div>    
+    </div>
+    <div class="row"><br/></div>
+    <div class="row d-flex mt-3">
+      
+      <div class="col-2">
+      </div>
+      <div class="col-7">
+      </div>                                   
+      <div class="col-3 justify-content-end align-self-center">
+        <button type="button" class="btn-lg btn-block btn-success">Comprar</button>
+      </div>   
   </div>
+
+   
+
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
