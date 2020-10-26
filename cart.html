@@ -11,7 +11,14 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link href="css/bootstrap-formhelpers.css" rel="stylesheet">
+  <link href="css/bootstrap-formhelpers.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap-formhelpers.js"></script>
+  <script src="js/bootstrap-formhelpers-countries.js"></script>
+  <script src="js/bootstrap-formhelpers.min.js"></script>
+  
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -68,7 +75,7 @@
 <div class="container">
   <div class="row list-gruop-item ml-1 mr-1 bg-light">
     <div class="col-2" >Detalle</div>
-    <div class="col-7" >Unidades</div>
+    <div class="col-6" >Unidades</div>
     <div class="col-2" >Total</div>
     </div>
     <div id="cart-product"></div>
@@ -77,68 +84,233 @@
         <div class="row">
           <div class="col-2">
           </div>
-          <div class="col-7">
+          <div class="col-6">
           </div>                                   
           <div class="col-2 justify-content-end align-self-center">
             <p class="text-dark">Subtotal:</p>
           </div> 
           <div class="col-1 justify-content-end align-self-center">
-            <p> $</p>
+            <h5 class="font-weight-bold">$<span name="totalProds" id="totalProd"></span>USD</h5>
           </div>     
       </div>
           <div class="row bg-light">
-              <div class="col-2">
+              <div class="col-2 align-self-center">
                 <p>Tipo de envío:</p>
               </div>
-              <div class="col-7">
-                  <div class="d-flex w-100 justify-content-between">
-                    <div class="input-group-text">
-                      <input type="radio" aria-label="Standar"> Standar (12 a 15 días)</input>
+              <div class="col-6">
+                <small>
+                  <div class="d-flex  justify-content-between">
+                   <div class="font-size: 0.1rem input-group-text">
+                      <input type="radio" id="standar" name= "envio" aria-label="Standar" onclick="envioStandar()"> Standar (12 a 15 días)</input>
                       </div>
                       <div class="input-group-text">
-                        <input type="radio" aria-label="Express"> Express (5-8 días)</input>
+                        <input type="radio" id="express" name= "envio" aria-label="Express" onclick="envioExpress()"> Express (5-8 días)</input>
                         </div>
                         <div class="input-group-text">
-                          <input type="radio" aria-label="Premium"> Premium (2-5 días)</input>
+                          <input type="radio" id="premium" name= "envio" aria-label="Premium" onclick="envioPremium()"> Premium (2-5 días)</input>
                           </div>
+                        </small>
                   </div>
               </div>                                   
               <div class="col-2 justify-content-end align-self-center">
                 <p class="text-dark">Costo de envío:</p>
               </div> 
-              <div class="col-1 justify-content-end align-self-center">
-                <p>$40</p>
+              <div class="col-2 justify-content-end align-self-center">
+                <p class="font-weight-regular text-primary"> $ <span id="costoEnvio" value="0"> 0 </span><span>USD</p>
               </div>     
           </div>
        
           <div class="row">
             <div class="col-2">
             </div>
-            <div class="col-7">
+            <div class="col-6">
             </div>                                   
             <div class="col-2 justify-content-end align-self-center">
-              <h6 class="font-weight-bold">Total:</h6>
+              <h5 class="font-weight-bold">Total:</h5>
             </div> 
-            <div class="col-1 justify-content-end align-self-center">
-              <p>$</p>
+            <div class="col-2 justify-content-end align-self-center">
+              <h5 class="font-weight-bold text-success"id="total" > Selecciona un tipo de envío</h5>
             </div>     
         </div>
-
-      </div>    
+      </div>  
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-12">
+            <p>País:</p>
+            <div class="col-4 bfh-selectbox bfh-countries" data-country="UY" data-flags="true">
+            </div>
+            <hr>
+            <p>Datos de envío:</p>
+            <form>
+              <div class="row">
+                <div class="col-6">
+                  <input type="text" class="form-control" placeholder="Calle">
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control" placeholder="Número">
+                </div>
+                 <div class="col">
+                  <input type="text" class="form-control" placeholder="Esquina">
+                </div>
+              </div>
+             
+            </form>
+          </div>
+          </div>
+      </div>     
     </div>
     <div class="row"><br/></div>
     <div class="row d-flex mt-3">
       
       <div class="col-2">
       </div>
-      <div class="col-7">
+      <div class="col-6">
       </div>                                   
       <div class="col-3 justify-content-end align-self-center">
-        <button type="button" class="btn-lg btn-block btn-success">Comprar</button>
-      </div>   
+        <div id="errorenvio">Por favor ingrese un tipo de envío.</div>
+        <button type="button" class="btn-lg btn-block btn-success"  data-toggle="modal" data-target="#myModal" onsubmit="return validateRadios()">Pagar</button>
+      </div>  
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Métodos de pago:</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                    
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                 
+                  <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                    
+                    <div class="card">
+                      <div class="card-header bg-success" role="tab" id="headingOne1">
+                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                          aria-controls="collapseOne1">
+                          <h5 class="mb-0 text-light">
+                            Crédito <i class="fas fa-angle-down rotate-icon"></i>
+                          </h5>
+                        </a>
+                      </div>
+
+                      <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                        data-parent="#accordionEx">
+                        <div class="card-body">
+                          <form>
+                            <div class="form-row p-3">
+                              <div class="col">
+                                <label for="validationDefault01">Número de tarjeta</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="Ingrese el número de su tarjeta" required>
+                              </div>
+                              </div>
+
+                              <div class="form-row justify-content-end mr-3">
+                                <div class="col-4">
+                                <label class="ml-3" for="validationDefault02">  Vencimiento</label>
+                                <div class="col bfh-datepicker"> 
+                                </div>
+                                </div>
+                              
+                            <div class="col-2 ">
+                              <label for="validationDefault03">CCV</label>
+                              <input type="text" class="form-control" id="validationDefault03" placeholder= "###" required>
+                            </div>
+                             </div>  
+
+                            <div class="form-row p-3"> 
+                              <div class="col-3">
+                                <label for="validationDefault04">Cuotas</label>
+                                <select class="custom-select" id="validationDefault04" required>
+                                  <option selected disabled value="1">1</option>
+                                  <option>1</option>
+                                  <option>3</option>
+                                  <option>6</option>
+                                </select>
+                              </div>
+                              <div class="col">
+                                <label for="validationDefault05">Documento</label>
+                                <input type="text" class="form-control" id="validationDefault05" placeholder="1.234.567-8" required>
+                              </div>
+                            </div>
+
+                            <div class="form-row p-3">
+                              <div class="col">
+                                <label for="validationDefault05">Nombre del titular</label>
+                                <input type="text" class="form-control" id="validationDefault05" placeholder="Ingrese un nombre" required>
+                              </div>
+                              </div>
+                              <div class="row justify-content-end">
+                            <div class="col-4 ">
+                            <button class="btn btn-primary" type="submit">Pagar</button>
+                           </div>
+                          </div>
+                          </form>
+                        
+                        </div>
+                      </div>
+                    <hr>
+                    <div class="card">
+                      <div class="card-header bg-danger" role="tab" id="headingTwo2">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                          aria-expanded="false" aria-controls="collapseTwo2">
+                          <h5 class="mb-0 text-light">
+                            Transferencia Bancaria <i class="fas fa-angle-down rotate-icon"></i>
+                          </h5>
+                        </a>
+                      </div>
+
+                      <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                        data-parent="#accordionEx">
+                        <div class="card-body">
+                          
+                            <div>
+                              <div class="col-8">
+                                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                  <div class="card-body">
+                                    <p class="font-weight-bold card-text">Datos de la cuenta a transferir:</p>
+                                    <p class="card-text">Titular: Jose Pérez</p>
+                                    <p class="card-text">Banco: Santander S.A.</p>
+                                    <p class="card-text">Número de cuenta: 00019029736</p>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+
+                              <div class="card alert-danger" role="alert">
+                               <p class="p-2"> Recuerda que debes realizar tu trasnferencia antes de las 48hs para que se apruebe tu pago.</p> 
+                              </div>
+                              
+                           
+                              <div class="row justify-content-end p-3">
+                                <div class="col-4 ">
+                                <button class="btn btn-primary" type="submit">Pagar</button>
+                               </div>
+                              </div>                        
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div> 
   </div>
 
-   
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
 
   
   <div id="spinner-wrapper">
@@ -149,7 +321,7 @@
       <div></div>
     </div>
   </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
+ 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
