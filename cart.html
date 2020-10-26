@@ -41,6 +41,9 @@
         font-size: 3.5rem;
       }
     }
+    #errorenvio, #calle_error, #numero_error, #esquina_error{
+      display: none;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -110,8 +113,9 @@
                           <input type="radio" id="premium" name= "envio" aria-label="Premium" onclick="envioPremium()"> Premium (2-5 días)</input>
                           </div>
                         </small>
-                  </div>
-              </div>                                   
+                        </div>    
+                        
+            </div>                                   
               <div class="col-2 justify-content-end align-self-center">
                 <p class="text-dark">Costo de envío:</p>
               </div> 
@@ -124,6 +128,9 @@
             <div class="col-2">
             </div>
             <div class="col-6">
+              <div >
+                <div id="errorenvio" class=" col-7 p-2 card alert-danger" role="alert">Por favor ingrese un tipo de envío.</div>
+                </div>
             </div>                                   
             <div class="col-2 justify-content-end align-self-center">
               <h5 class="font-weight-bold">Total:</h5>
@@ -135,22 +142,26 @@
       </div>  
       <div class="list-group-item">
         <div class="row">
-          <div class="col-12">
-            <p>País:</p>
-            <div class="col-4 bfh-selectbox bfh-countries" data-country="UY" data-flags="true">
-            </div>
-            <hr>
-            <p>Datos de envío:</p>
-            <form>
-              <div class="row">
+          <div class="col-12 ml-2 ">
+          
+            <form class="mr-3 " id="form" name= "form" action="#"  method="GET" onsubmit="return validateRadios() ">
+              <p>País:</p>
+              <div class="col-4 bfh-selectbox bfh-countries" data-country="UY" data-flags="true">
+              </div>
+              <hr>
+              <p>Datos de envío:</p>
+              <div class="row ml-2">
                 <div class="col-6">
-                  <input type="text" class="form-control" placeholder="Calle">
+                  <input type="text" name="calle" class="form-control" placeholder="Calle">
+                <div id="calle_error" class="alert-danger">Debe ingresar una calle</div>
                 </div>
                 <div class="col-2">
-                  <input type="text" class="form-control" placeholder="Número">
+                  <input type="text" name="numero" class="form-control" placeholder="Número">
+                  <div id="numero_error" class="alert-danger">Debe ingresar un numero de puerta</div>
                 </div>
                  <div class="col">
-                  <input type="text" class="form-control" placeholder="Esquina">
+                  <input type="text" name="esquina" class="form-control" placeholder="Esquina">
+                  <div id="esquina_error" class="alert-danger">Debe ingresar una esquina de referencia</div>
                 </div>
               </div>
              
@@ -167,8 +178,8 @@
       <div class="col-6">
       </div>                                   
       <div class="col-3 justify-content-end align-self-center">
-        <div id="errorenvio">Por favor ingrese un tipo de envío.</div>
-        <button type="button" class="btn-lg btn-block btn-success"  data-toggle="modal" data-target="#myModal" onsubmit="return validateRadios()">Pagar</button>
+        
+        <button type="button" class="btn-lg btn-block btn-success"  data-toggle="modal" data-target="#myModal" onclick="validated()" >Pagar</button>
       </div>  
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -278,7 +289,7 @@
                           </div>
 
                               <div class="card alert-danger" role="alert">
-                               <p class="p-2"> Recuerda que debes realizar tu trasnferencia antes de las 48hs para que se apruebe tu pago.</p> 
+                               <p class="p-2"> Recuerda que debes realizar tu transferencia antes de las 48hs para que se apruebe tu pago.</p> 
                               </div>
                               
                            

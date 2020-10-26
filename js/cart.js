@@ -119,7 +119,10 @@ function calcularTotal(){
 }
     document.getElementById("total").innerHTML  = total;
 }
-
+$('button[type="button"]').on('click', function() {
+    if (validateRadios())
+      $('#myModal').modal();
+  });
 
 function validateRadios() {
     var arrayRadios = document.getElementsByName("envio");
@@ -132,11 +135,72 @@ function validateRadios() {
     }
     if(!isChecked) {
         document.getElementById("errorenvio").style.display = "block";
+        return false;
     } else {
         document.getElementById("errorenvio").style.display = "none";
+        return true;      
     }
 }
 
+
+var calle = document.forms["form"]["calle"];
+var numero = document.forms["form"]["numero"];
+var esquina = document.forms["form"]["esquina"];
+
+var calle_error = document.getElementById("calle_error");
+var numero_error = document.getElementById("numero_error");
+var esquina_error = document.getElementById("esquina_error");
+
+calle.addEventListener("input", calle_Verify);
+numero.addEventListener("input", numero_Verify);
+esquina.addEventListener("input", esquina_Verify);
+
+
+function validated() {
+  if (calle.value.length == 0) {
+    calle.style.border = "1px solid red";
+    calle_error.style.display = "block";
+    calle.focus();
+    return false; 
+  }
+  if (numero.value.length == 0) {
+    numero.style.border = "1px solid red";
+    numero_error.style.display = "block";
+    numero.focus();
+    return false; 
+  }
+  if (esquina.value.length == 0) {
+    esquina.style.border = "1px solid red";
+    esquina_error.style.display = "block";
+    esquina.focus();
+    return false; 
+  }
+}
+
+function calle_Verify() { 
+    if (calle.value.length >= 1) {
+      calle.style.border = "1px solid silver";
+      calle_error.style.display = "none";
+      return true;
+      }
+  }
+
+  function numero_Verify() { 
+    if (numero.value.length >= 1) {
+      numero.style.border = "1px solid silver";
+      numero_error.style.display = "none";
+      return true;
+      }
+  }
+  
+  function esquina_Verify() { 
+    if (esquina.value.length >= 1) {
+      esquina.style.border = "1px solid silver";
+      esquina_error.style.display = "none";
+      return true;
+      }
+  }
+  
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
