@@ -68,23 +68,21 @@ function showProducts() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-        <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + `</h4>
-                        <small class="text-danger">` + product.soldCount + ` artículos vendidos</small>
+        
+            <a href="product-info.html" class="card col-md-3 p-2 list-group-item list-group-item-action shadow-sm ">
+              <div class=" mb-3  ">
+                <img src="` + product.imgSrc + `" alt="` + product.description + `" class="bd-placeholder-img card-img-topl" width="100%" > 
+                <div class="card-body">
+                   <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ product.name + `</h4>
+                            <small class="text-danger">` + product.soldCount + ` artículos vendidos</small>
+                        </div>
+                        <p> `+ product.description + `</p>
+                        <small class="alert-success">` + product.cost +' '+ product.currency + `</small>
                     </div>
-                    <p> `+ product.description + `</p>
-                    <small class="alert-success">` + product.cost +' '+ product.currency + `</small>
-                </div>
-            </div>
-        </div>
-        </a>
+                  </div>
+                </a>
+             
         `
       }
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
