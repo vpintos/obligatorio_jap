@@ -76,6 +76,5 @@ function deleteUser(){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
-  document.getElementById("printEmail").innerHTML =  miStorage.getItem("keyEmail");
-  document.getElementById("printPassword").innerHTML =  miStorage.getItem("keyPassword");
+  
   });
