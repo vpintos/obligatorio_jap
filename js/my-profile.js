@@ -25,12 +25,6 @@ document.addEventListener("DOMContentLoaded", function(e){
   pass = miStorage.getItem("keyPassword");
   email =  miStorage.getItem("keyEmail");
   
-  document.getElementById("printName").setAttribute('value', name);
-  document.getElementById("printSurname").setAttribute('value', surname);
-  document.getElementById("printAge").setAttribute('value', age);
-  document.getElementById("printPhone").setAttribute('value', phone);
-
-
 
 
   document.getElementById("printUserProfile").setAttribute('value', user);
