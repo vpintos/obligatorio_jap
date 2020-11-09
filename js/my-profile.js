@@ -21,16 +21,6 @@ function guardarDatos(){
 document.addEventListener("DOMContentLoaded", function(e){ 
 
 
-data = miStorage.getItem("keyData");
-
-var json = JSON.parse(data);
-
-name = json.nombre;
-surname = json.apellido;
-age = json.edad;
-phone = json.telefono;
-
-
   user = miStorage.getItem("keyUser");
   pass = miStorage.getItem("keyPassword");
   email =  miStorage.getItem("keyEmail");
