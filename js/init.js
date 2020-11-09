@@ -65,6 +65,8 @@ function deleteUser(){
   localStorage.removeItem("keyUser");
   localStorage.removeItem("keyEmail");
   localStorage.removeItem("keyPassword");
+  localStorage.removeItem("keyData");
+  
 
 }
 
