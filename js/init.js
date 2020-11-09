@@ -47,18 +47,25 @@ if(parts[parts.length - 1] == '') {
     window.location.replace('login.html');
 }
 
-miStorage = window.sessionStorage; 
+miStorage = window.localStorage; 
 function printUserNav(){ 
-  
+
   var printUser = document.getElementById("exampleInputUser").value;
-  sessionStorage.setItem("keyUser", printUser); 
+  localStorage.setItem("keyUser", printUser); 
+   var printEmail = document.getElementById("exampleInputEmail1").value;
+  localStorage.setItem("keyEmail", printEmail); 
+  var printPassword = document.getElementById("exampleInputPassword1").value;
+  localStorage.setItem("keyPassword", printPassword); 
+
+
 }
  
-
-
  
 function deleteUser(){
-  sessionStorage.removeItem("keyUser"); 
+  localStorage.removeItem("keyUser");
+  localStorage.removeItem("keyEmail");
+  localStorage.removeItem("keyPassword");
+
 }
 
 
@@ -67,4 +74,6 @@ function deleteUser(){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
+  document.getElementById("printEmail").innerHTML =  miStorage.getItem("keyEmail");
+  document.getElementById("printPassword").innerHTML =  miStorage.getItem("keyPassword");
   });
