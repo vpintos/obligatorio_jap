@@ -21,7 +21,7 @@ function guardarDatos(){
 document.addEventListener("DOMContentLoaded", function(e){ 
 
 
-data = miStorage.getItem("keyData")
+data = miStorage.getItem("keyData");
 
 var json = JSON.parse(data);
 
