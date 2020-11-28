@@ -55,6 +55,7 @@ function printUserNav(){
 
 
 }
+/*
  function loginMove(){
 var user =  miStorage.getItem("keyUser");
  
@@ -62,6 +63,7 @@ if(user == null) {
     window.location.replace('login.html');
 }
  }
+*/
 
 function deleteUser(){
   localStorage.removeItem("keyUser");
@@ -79,5 +81,5 @@ function deleteUser(){
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
   loginMove();
-  
+
   });
