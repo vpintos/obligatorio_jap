@@ -77,15 +77,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     mostrarDatos()
 
-
-
   user = miStorage.getItem("keyUser");
   pass = miStorage.getItem("keyPassword");
   email =  miStorage.getItem("keyEmail");
-  
-
-
-
 
   document.getElementById("printUserProfile").setAttribute('value', user);
   document.getElementById("printPassProfile").setAttribute('value', pass);

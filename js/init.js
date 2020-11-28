@@ -79,4 +79,5 @@ function deleteUser(){
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
   loginMove();
+  
   });
