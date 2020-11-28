@@ -41,7 +41,15 @@ var getJSONData = function(url){
     });
 }
 
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function(e){
+  document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
 
+  loginMove();
+
+  });
 
 miStorage = window.localStorage; 
 function printUserNav(){ 
@@ -55,7 +63,7 @@ function printUserNav(){
 
 
 }
-/*
+
  function loginMove(){
 var user =  miStorage.getItem("keyUser");
  
@@ -63,7 +71,7 @@ if(user == null) {
     window.location.replace('login.html');
 }
  }
-*/
+
 
 function deleteUser(){
   localStorage.removeItem("keyUser");
@@ -75,11 +83,3 @@ function deleteUser(){
 }
 
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-  document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
-  loginMove();
-
-  });
