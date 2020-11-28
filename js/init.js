@@ -60,17 +60,15 @@ function printUserNav(){
   localStorage.setItem("keyEmail", printEmail); 
   var printPassword = document.getElementById("exampleInputPassword1").value;
   localStorage.setItem("keyPassword", printPassword); 
-
-
 }
 
- function loginMove(){
+function loginMove(){
 var user =  miStorage.getItem("keyUser");
  
 if(user == null) {
     window.location.replace('login.html');
+  }
 }
- }
 
 
 function deleteUser(){
