@@ -169,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 
-document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             related = resultObj.data;
