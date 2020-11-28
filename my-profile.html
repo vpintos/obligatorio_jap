@@ -80,7 +80,7 @@
         <hr>
       <div class="row">
          
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-6">
             <div class="text-center">
               <img src="https://via.placeholder.com/150" class="avatar img-circle" alt="avatar">
               <h6>Sube una foto de perfil...</h6>
@@ -91,58 +91,58 @@
           
           
           <div class="col-md-9 personal-info">
-           <div class="col-lg-3"></div> 
-           <div class="col-lg-8 p-2"> <h4>Edita tus datos</h4></div>
+           <div class="col-md-3"></div> 
+           <div class="col-md-8 p-2"> <h4>Edita tus datos</h4></div>
             <form class="form-horizontal" action="" role="form">
               <div class="form-group">
-                <label class="col-lg-3 control-label">Nombre:</label>
-                <div class="col-lg-8">
+                <label class="col-md-3 col-sm-1 control-label">Nombre:</label>
+                <div class="col-md-8">
                   <input class="form-control" type="text" value="" id="printName">
                 </div>
               </div>         
               <div class="form-group">
-                <label class="col-lg-3 control-label">Apellido:</label>
-                <div class="col-lg-8">
+                <label class="col-md-3 col-sm-1 control-label">Apellido:</label>
+                <div class="col-md-8">
                   <input class="form-control" type="text" value="" id="printSurname">
                 </div>
               </div>   
               <div class="form-group">
-                <label class="col-lg-3 control-label">Edad:</label>
-                <div class="col-lg-3">
+                <label class="col-md-3 col-sm-1 control-label">Edad:</label>
+                <div class="col-md-3">
                     <input type="text" class="form-control bfh-number" min="1" max="99" id="printAge">
                 </div>
               
-                <label class="col-lg-1 control-label">Teléfono:</label>
-                <div class="col-lg-4">
+                <label class="col-md-1 col-sm-1 control-label">Teléfono:</label>
+                <div class="col-md-4">
                   <input class="form-control bfh-phone" type="tel"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" id="printPhone">
                 </div>
               </div> 
               <div class="form-group">
-                <label class="col-lg-3 control-label">Email:</label>
-                <div class="col-lg-8">
+                <label class="col-md-3 col-sm-1 control-label">Email:</label>
+                <div class="col-md-8">
                   <input class="form-control" type="text" value="" id="printEmailProfile" disabled> 
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3 control-label">Usuario:</label>
+                <label class="col-md-3 col-sm-1 control-label">Usuario:</label>
                 <div class="col-md-8"  >
                   <input class="form-control" type="text" value=""id="printUserProfile" disabled >
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3 control-label">Contraseña:</label>
+                <label class="col-md-3 col-sm-1 control-label">Contraseña:</label>
                 <div class="col-md-8">
                   <input class="form-control" type="password" value="" id="printPassProfile">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3 control-label">Confirma contraseña:</label>
+                <label class="col-md-3 col-sm-1 control-label">Confirma contraseña:</label>
                 <div class="col-md-8">
                   <input class="form-control" type="password" value=""  id="printPassProfile2">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-3 control-label"></label>
+                <label class="col-md-3 col-sm-1 control-label"></label>
                 <div class="col-md-8">
                   <input type="button" class="btn btn-primary" value="Guardar cambios"   onclick ="guardarDatos()">
                   <span></span>
@@ -152,7 +152,7 @@
                 </div>
               </div>
             </form>
-           
+           <div id="profile-data"></div>
           </div>
       </div>
     

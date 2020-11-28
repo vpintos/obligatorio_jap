@@ -14,6 +14,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
   
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
@@ -59,6 +60,14 @@ fieldset, label { margin: 0; padding: 0; }
 .rating2 > label { 
   color: #ddd; 
  float: right; 
+}
+
+.fa{
+  color: lightslategray
+}
+
+.checked {
+  color: orange;
 }
 
 
@@ -160,10 +169,10 @@ form #comment_error{
 
     <div class="container p-5">
       <div class="container">
-      <form id= "form" method="GET"  onsubmit = "return validated()">
+      <form id= "form" method="GET"  onsubmit = "return validated(), guardarComment()">
         <h3>Nuevo comentario</h3>
         <div class="form-group">
-          <fieldset class="rating">
+          <fieldset id="stars" class="rating">
             <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Excelente- 5 stars"></label>
             <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Muy bueno - 4 stars"></label>
             <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Bueno - 3 stars"></label>
@@ -172,19 +181,23 @@ form #comment_error{
         </fieldset>
         <br><br>
           <label for="comment">Ingresa tu comentario:</label>
-          <textarea name="comment"class="form-control" rows="5" id="comment"></textarea>
-          <div id= "comment_error" class="alert-danger" role="alert" >Debes ingresar un comentario. </div>
+          <textarea name="comment"class="form-control" rows="5" id="comment" value=""></textarea>
+          <div id= "comment_error" class="alert-danger" role="alert" >Debes ingresar un comentario y una calificación para el producto. </div>
         </div> 
-        <button type="submit" class="btn btn-secondary">Envíar</button>
+        <button type="submit" class="btn btn-secondary" >Envíar</button>
       </form>
     </div>
   </div>
      
     </div>
+
+
+
     <div class="container p-5">
       <div class="container">
         <h3>Comentarios</h3>
     <div id="productComment" ></div>
+    <div id="productCommentNew" ></div>
     </div>
     </div>
 

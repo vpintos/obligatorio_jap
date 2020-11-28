@@ -47,6 +47,11 @@ pass = json.contraseña;
   document.getElementById("printPassProfile").setAttribute('value', pass);
   document.getElementById("printPassProfile2").setAttribute('value', pass);
   document.getElementById("printEmailProfile").setAttribute('value', email);
+
+  document.getElementById("profile-data").innerHTML  = `  <div class="card alert-success" role="alert">
+  <p class="p-2"> Tus datos han sido guardados con éxito con éxito.</p>  </div><div class="row justify-content-end p-3">
+  <button class= "btn btn-primary" onclick="location.href='index.html'" type="button"> Volver al inicio </button> </div>
+ `;  
  
 } else {
     mostrarLogin()

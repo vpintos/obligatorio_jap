@@ -2,18 +2,7 @@ var product = [];
 var comments = [];
 var related = [];
 
-var coment = document.forms["form"]["comment"];
 
-var comment_error = document.getElementById("comment_error");
-
-function validated() {
-if (comment.value.length == 0) {
-    comment.style.border = "1px solid red";
-    comment_error.style.display = "block";
-    comment.focus();
-    return false; 
-  }
-}
 
 function showImagesGallery1(array){
 
@@ -53,46 +42,6 @@ function showImagesGallery2(array){
     }
 }
 
-
-    
-
-function showProductComments(array) {
-    let htmlContentToAppend = "";
-
-    for (let i = 0; i < array.length; i++) {
-        let comments = array[i];
-
-            htmlContentToAppend += `
-        <div class="card bg-light mb-3">
-            <div class="card-header"> 
-                <p style="float:left"> Calificación: <strong class= "text-success" > ` + comments.score + ` /5 </strong> </p> 
-                <fieldset class="rating2">
-                    <input id="star5" name="rating" value="5" />
-                    <label class = "full" for="star5" title="Excelente- 5 stars"></label>
-                    <input id="star4" name="rating" value="4" />
-                    <label class = "full" for="star4" title="Muy bueno - 4 stars"></label>
-                    <input id="star3" name="rating" value="3" />
-                    <label class = "full" for="star3" title="Bueno - 3 stars"></label>
-                    <input id="star2" name="rating" value="2" />
-                    <label class = "full" for="star2" title="Malo - 2 stars"></label>
-                    <input id="star1" name="rating" value="1" />
-                    <label class = "full" for="star1" title="Muy malo - 1 star"></label>
-                </fieldset>
-            </div>
-            <div class="card-body">
-               <strong class="card-title text-primary " > ` + comments.user + `</strong>
-               <p class="text-muted">` + comments.dateTime + `</p>
-               <p class="card-text">` + comments.description + `.</p>
-            </div>
-            <br>
-        </div>        
-    `
-        document.getElementById("productComment").innerHTML = htmlContentToAppend;
-    }
-    // --lo intente- no salió --  // $(".rating2 > input[value="+comments.score+"]").prop("checked", true);
-}
-
-
 function showRelatedProducts(array) {
 
     let htmlContentToAppend = "";
@@ -124,12 +73,150 @@ function showRelatedProducts(array) {
          }
     }
 } 
+    
+
+function showProductComments(array) {
+   
+    let htmlContentToAppend = "";
+
+    for (let i = 0; i < array.length; i++) {
+        let comments = array[i];
+    if (comments.score == 3){
+        htmlContentToAppend+=    `
+        <div class="card bg-light mb-3">
+        <div class="card-header"> 
+            <p style="float:left"> Calificación: <strong class= "text-success" > ` + comments.score + ` /5 </strong> </p> <div id="starRating"></div>
+            <div id="score" value= " ` + comments.score + `"></div>
+           <div style="float: right"> 
+           <span class="fa fa-star checked" style="font-size:24px"></span>
+            <span class="fa fa-star checked" style="font-size:24px"></span>
+            <span class="fa fa-star checked" style="font-size:24px"></span>
+            <span class="fa fa-star " style="font-size:24px"></span>
+            <span class="fa fa-star " style="font-size:24px"></span>
+            </div>
+        </div>
+        <div class="card-body">
+           <strong class="card-title text-primary " > ` + comments.user + `</strong>
+           <p class="text-muted">` + comments.dateTime + `</p>
+           <p class="card-text">` + comments.description + `.</p>
+        </div>
+        <br>
+    </div>        
+`
+document.getElementById("productComment").innerHTML = htmlContentToAppend; 
+    }
+    if (comments.score == 4){
+        htmlContentToAppend+=    `
+        <div class="card bg-light mb-3">
+        <div class="card-header"> 
+            <p style="float:left"> Calificación: <strong class= "text-success" > ` + comments.score + ` /5 </strong> </p> <div id="starRating"></div>
+            <div style="float: right"> 
+           <span class="fa fa-star checked" style="font-size:24px"></span>
+            <span class="fa fa-star checked" style="font-size:24px"></span>
+            <span class="fa fa-star checked" style="font-size:24px"></span>
+            <span class="fa fa-star checked " style="font-size:24px"></span>
+            <span class="fa fa-star " style="font-size:24px"></span>
+            </div>
+        </div>
+        <div class="card-body">
+           <strong class="card-title text-primary " > ` + comments.user + `</strong>
+           <p class="text-muted">` + comments.dateTime + `</p>
+           <p class="card-text">` + comments.description + `.</p>
+        </div>
+        <br>
+    </div>        
+`
+document.getElementById("productComment").innerHTML = htmlContentToAppend; 
+}
+if (comments.score == 5){
+    htmlContentToAppend+=    `
+    <div class="card bg-light mb-3">
+    <div class="card-header"> 
+        <p style="float:left"> Calificación: <strong class= "text-success" > ` + comments.score + ` /5 </strong> </p> <div id="starRating"></div>
+        <div style="float: right"> 
+       <span class="fa fa-star checked" style="font-size:24px"></span>
+        <span class="fa fa-star checked" style="font-size:24px"></span>
+        <span class="fa fa-star checked" style="font-size:24px"></span>
+        <span class="fa fa-star checked " style="font-size:24px"></span>
+        <span class="fa fa-star checked " style="font-size:24px"></span>
+        </div>
+    </div>
+    <div class="card-body">
+       <strong class="card-title text-primary " > ` + comments.user + `</strong>
+       <p class="text-muted">` + comments.dateTime + `</p>
+       <p class="card-text">` + comments.description + `.</p>
+    </div>
+    <br>
+</div>        
+`
+document.getElementById("productComment").innerHTML = htmlContentToAppend; 
+}
+}
+}
+
+
+function validated() {
+var comment = document.forms["form"]["comment"];
+var star1 = document.getElementById("star1").checked ;
+var star2 = document.getElementById("star2").checked ;
+var star3 = document.getElementById("star3").checked ;
+var star4 = document.getElementById("star4").checked ;
+var star5 = document.getElementById("star5").checked ;
+var comment_error = document.getElementById("comment_error");
+if (comment.value.length == 0) {
+    comment.style.border = "1px solid red";
+    comment_error.style.display = "block";
+    comment.focus();
+    return false; 
+  }
+if (star1 == false && star2 == false && star3 == false && star4 == false && star5 == false){
+    comment_error.style.display = "block";
+   
+    return false;    
+}
+}
+
+//intento de mostrar el comentario pero nunca funcionó
+/*
+miStorage2 = window.sessionStorage;
+function guardarComment(){
+    
+        var comentarioN = {
+        
+        "comentario": document.getElementById("comment").value,
+        "rating": document.querySelector('input[name="rating"]:checked').value,
+    }
+
+    sessionStorage.setItem("keyComment", JSON.stringify(comentarioN));
+    mostrarComment();
+}
+
+
+
+function mostrarComment(){
+    data = miStorage2.getItem("keyComment");
+   
+    console.log(data);
+    
+    console.log(JSON.parse(data));
+    
+    const json = JSON.parse(data);
+    
+    rate = json.rating;  
+    comment= json.comentario;
+    if (json.rating == 5){
+       
+    document.getElementById("productCommentNew").innerHTML = miStorage2.getItem("keyComment"); 
+     
+    }
+}
+*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+      getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
 
             product = resultObj.data;
@@ -151,24 +238,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showImagesGallery1(product.images);
             showImagesGallery2(product.images);
 
-        }
+        } 
     });
-});
-
-
-document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-
-            comments = resultObj.data;
-            
-            //Muestro las categorías ordenadas
-            showProductComments(comments);
-        }
-    });
-});
-
-
+   
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             related = resultObj.data;
@@ -176,5 +248,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
             //Muestro las categorías ordenadas
             showRelatedProducts(related) ;
         }
+    });  
+   getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+
+            comments = resultObj.data;
+            
+            //Muestro las categorías ordenadas
+            showProductComments(comments);
+            
+        }
     });
 });
+
+

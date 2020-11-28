@@ -119,10 +119,7 @@ function calcularTotal(){
 }
     document.getElementById("total").innerHTML  = total;
 }
-$('button[type="button"]').on('click', function() {
-    if (validateRadios())
-      $('#myModal').modal();
-  });
+
 
 function validateRadios() {
     var arrayRadios = document.getElementsByName("envio");
@@ -135,12 +132,22 @@ function validateRadios() {
     }
     if(!isChecked) {
         document.getElementById("errorenvio").style.display = "block";
+        $('#mymodal').modal("hide");
         return false;
     } else {
         document.getElementById("errorenvio").style.display = "none";
         return true;      
     }
 }
+
+$('button[type="button"]').on('click', function() {
+    if (validateRadios() && validated()){
+      $('#myModal').modal({backdrop: "static"});
+} 
+});
+
+ 
+
 
 
 var calle = document.forms["form"]["calle"];
@@ -151,56 +158,114 @@ var calle_error = document.getElementById("calle_error");
 var numero_error = document.getElementById("numero_error");
 var esquina_error = document.getElementById("esquina_error");
 
-calle.addEventListener("input", calle_Verify);
-numero.addEventListener("input", numero_Verify);
-esquina.addEventListener("input", esquina_Verify);
 
 
 function validated() {
+
   if (calle.value.length == 0) {
     calle.style.border = "1px solid red";
     calle_error.style.display = "block";
     calle.focus();
+    $('#mymodal').modal("hide");
     return false; 
-  }
-  if (numero.value.length == 0) {
+  }  if (numero.value.length == 0) {
     numero.style.border = "1px solid red";
     numero_error.style.display = "block";
     numero.focus();
+    $('#mymodal').modal("hide");
+    
     return false; 
-  }
-  if (esquina.value.length == 0) {
+  }  if (esquina.value.length == 0) {
     esquina.style.border = "1px solid red";
     esquina_error.style.display = "block";
     esquina.focus();
+    $('#mymodal').modal("hide");
+   
     return false; 
+  }
+  else{
+      return true;
   }
 }
 
-function calle_Verify() { 
+
+function calle_verify() { 
     if (calle.value.length >= 1) {
       calle.style.border = "1px solid silver";
       calle_error.style.display = "none";
+      $('#mymodal').modal("show");
+      return true;
+      }
+    }
+    
+function numero_verify() { 
+    if (numero.value.length >= 1) {
+      numero.style.border = "1px solid silver";
+      numero_error.style.display = "none";
+      $('#mymodal').modal("show");
+      return true;
+      }
+    }
+    
+function esquina_verify() { 
+    if (esquina.value.length >= 1) {
+      esquina.style.border = "1px solid silver";
+      esquina_error.style.display = "none";
+      $('#mymodal').modal("show");
       return true;
       }
   }
 
-  function numero_Verify() { 
-    if (numero.value.length >= 1) {
-      numero.style.border = "1px solid silver";
-      numero_error.style.display = "none";
-      return true;
+calle.addEventListener("input", calle_verify);
+numero.addEventListener("input", numero_verify);
+esquina.addEventListener("input", esquina_verify);
+
+
+
+var card_number = document.forms["pago"]["card-number"];
+var card_ccv = document.forms["pago"]["card-ccv"];
+var card_doc = document.forms["pago"]["card-doc"];
+var card_name = document.forms["pago"]["card-name"];
+
+function pagoValidated() {
+
+    if (card_number.value.length == 0) {
+      card_number.style.border = "1px solid red";
+      return false; 
+    }  if (card_ccv.value.length == 0) {
+      card_ccv.style.border = "1px solid red";
+      return false;  
+    }  if (card_doc.value.length == 0) {
+        card_doc.style.border = "1px solid red";   
+        return false; 
+    }  if (card_name.value.length == 0) {
+        card_name.style.border = "1px solid red";   
+        return false; 
       }
+ else{
+     pagado();
+ }
   }
-  
-  function esquina_Verify() { 
-    if (esquina.value.length >= 1) {
-      esquina.style.border = "1px solid silver";
-      esquina_error.style.display = "none";
-      return true;
-      }
-  }
-  
+
+
+
+function pagado(){
+
+    document.getElementById("credito").innerHTML  = `  <div class="card alert-success" role="alert">
+    <p class="p-2"> Tu pago ha sido realizado con éxito.</p>  </div><div class="row justify-content-end p-3">
+    <button class= "btn btn-primary" onclick="location.href='index.html'" type="button"> Volver al inicio </button> </div>
+   `;  
+}
+
+
+function transfer(){
+
+    document.getElementById("transferencia").innerHTML  = `  <div class="card alert-success" role="alert">
+    <p class="p-2"> Quedamos a la espera de tu tranferencia. Muchas gracias.</p>  </div> <div class="row justify-content-end p-3">
+    <button class= "btn btn-primary" onclick="location.href='index.html'" type="button"> Volver al inicio </button> </div>
+   `;  
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.

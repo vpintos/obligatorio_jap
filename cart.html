@@ -13,11 +13,16 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap-formhelpers.css" rel="stylesheet">
   <link href="css/bootstrap-formhelpers.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap-formhelpers.js"></script>
   <script src="js/bootstrap-formhelpers-countries.js"></script>
   
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
   	<!-- jQuery -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -51,6 +56,25 @@
     #errorenvio, #calle_error, #numero_error, #esquina_error{
       display: none;
     }
+
+    .modal {
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 2000;
+    height:300px;
+    width:400px;
+    background-color:rgba(0, 0, 0, 0.3);
+    border-radius:10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 3px 7px rgba(0, 0, 0, 1);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    }
+
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -82,7 +106,7 @@
     <br/>
 </div>
 
-<div class="container">
+<div class="container"  id="pago">
   <div class="row list-gruop-item ml-1 mr-1 bg-light">
     <div class="col-2" >Detalle</div>
     <div class="col-6" >Unidades</div>
@@ -176,7 +200,7 @@
           </div>
           </div>
       </div>     
-    </div>
+  
     <div class="row"><br/></div>
     <div class="row d-flex mt-3">
       
@@ -186,60 +210,55 @@
       </div>                                   
       <div class="col-3 justify-content-end align-self-center">
         
-        <button type="button" class="btn-lg btn-block btn-success"  data-toggle="modal" data-target="#myModal" onclick="validated()" >Pagar</button>
+        <button type="button" class="btn-lg btn-block btn-success"  data-toggle="modal" data-target="#myModal" data-backdrop="false" onclick="validated()" >Pagar</button>
       </div>  
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      </div>
+      <div class="modal shadow p-3 mb-5 " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Métodos de pago:</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-                    
-                    <span aria-hidden="true">&times;</span>
-                </button>
+               
                 </div>
-                <div class="modal-body">
-                 
+                <div class="modal-body">                 
                   <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                     
                     <div class="card">
-                      <div class="card-header bg-success" role="tab" id="headingOne1">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
-                          aria-controls="collapseOne1">
+                      <a class="card-header bg-success" role="tab" id="headingOne1">
+                        <div class="collapsed" data-toggle="collapse" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
                           <h5 class="mb-0 text-light">
-                            Crédito <i class="fas fa-angle-down rotate-icon"></i>
+                            Crédito <i class="fa fa-caret-down" style="color:white"></i>
                           </h5>
-                        </a>
-                      </div>
+                        </div>
+                      </a>
 
-                      <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                        data-parent="#accordionEx">
-                        <div class="card-body">
-                          <form>
+                      <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"  data-parent="#accordionEx">
+                        <div class="card-body" id="credito">
+                          <form id="pago">
                             <div class="form-row p-3">
                               <div class="col">
                                 <label for="validationDefault01">Número de tarjeta</label>
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="Ingrese el número de su tarjeta" required>
+                                <input name="card-number" type="text" class="form-control" id="validationDefault01" placeholder="Ingrese el número de su tarjeta" required>
                               </div>
                               </div>
 
-                              <div class="form-row justify-content-end mr-3">
-                                <div class="col-4">
+                              <div class="form-row justify-content-start mr-3">
+                                <div class="col-5">
                                 <label class="ml-3" for="validationDefault02">  Vencimiento</label>
-                                <div class="col bfh-datepicker"> 
+                                <div class="col bfh-datepicker" name="card-date"> 
                                 </div>
                                 </div>
                               
                             <div class="col-2 ">
                               <label for="validationDefault03">CCV</label>
-                              <input type="text" class="form-control" id="validationDefault03" placeholder= "###" required>
+                              <input name="card-ccv" type="text" class="form-control" id="validationDefault03" placeholder= "###" required>
                             </div>
                              </div>  
 
                             <div class="form-row p-3"> 
                               <div class="col-3">
                                 <label for="validationDefault04">Cuotas</label>
-                                <select class="custom-select" id="validationDefault04" required>
+                                <select name="card-cuota" class="custom-select" id="validationDefault04" required>
                                   <option selected disabled value="1">1</option>
                                   <option>1</option>
                                   <option>3</option>
@@ -248,41 +267,40 @@
                               </div>
                               <div class="col">
                                 <label for="validationDefault05">Documento</label>
-                                <input type="text" class="form-control" id="validationDefault05" placeholder="1.234.567-8" required>
+                                <input name="card-doc" type="text" class="form-control" id="validationDefault05" placeholder="1.234.567-8" required>
                               </div>
                             </div>
 
                             <div class="form-row p-3">
                               <div class="col">
                                 <label for="validationDefault05">Nombre del titular</label>
-                                <input type="text" class="form-control" id="validationDefault05" placeholder="Ingrese un nombre" required>
+                                <input name="card-name" type="text" class="form-control" id="validationDefault05" placeholder="Ingrese un nombre" required>
                               </div>
                               </div>
                               <div class="row justify-content-end">
                             <div class="col-4 ">
-                            <button class="btn btn-primary" type="submit">Pagar</button>
+                            <button id="pagar" class="btn btn-primary" type="button" onclick="pagoValidated()">Pagar</button>
                            </div>
                           </div>
                           </form>
                         
                         </div>
                       </div>
+                    </div>
                     <hr>
                     <div class="card">
-                      <div class="card-header bg-danger" role="tab" id="headingTwo2">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
-                          aria-expanded="false" aria-controls="collapseTwo2">
+                      <a class="card-header bg-danger" role="tab" id="headingTwo2">
+                        <div class="collapsed" data-toggle="collapse"  href="#collapseTwo2"  aria-expanded="false" aria-controls="collapseTwo2">
                           <h5 class="mb-0 text-light">
-                            Transferencia Bancaria <i class="fas fa-angle-down rotate-icon"></i>
+                            Transferencia Bancaria <i class="fa fa-caret-down" style="color:white"></i>
                           </h5>
-                        </a>
-                      </div>
+                        </div>
+                      </a>
 
-                      <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
-                        data-parent="#accordionEx">
+                      <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"  data-parent="#accordionEx">
                         <div class="card-body">
                           
-                            <div>
+                            <div id="transferencia">
                               <div class="col-8">
                                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                                   <div class="card-body">
@@ -293,7 +311,7 @@
                                   </div>
                               </div>
                             </div>
-                          </div>
+                         
 
                               <div class="card alert-danger" role="alert">
                                <p class="p-2"> Recuerda que debes realizar tu transferencia antes de las 48hs para que se apruebe tu pago.</p> 
@@ -302,9 +320,10 @@
                            
                               <div class="row justify-content-end p-3">
                                 <div class="col-4 ">
-                                <button class="btn btn-primary" type="submit">Pagar</button>
+                                <button class="btn btn-primary" type="submit" onclick="transfer()">Aceptar</button>
                                </div>
-                              </div>                        
+                              </div> 
+                               </div>                     
                       </div>
 
                     </div>
@@ -317,8 +336,6 @@
     </div>
 </div>
 </div>
-</div> 
-  </div>
 
   <footer class="text-muted">
     <div class="container">

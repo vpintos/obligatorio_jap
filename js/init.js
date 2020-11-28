@@ -42,10 +42,6 @@ var getJSONData = function(url){
 }
 
 
-var parts = location.pathname.split('/');
-if(parts[parts.length - 1] == '') {
-    window.location.replace('login.html');
-}
 
 miStorage = window.localStorage; 
 function printUserNav(){ 
@@ -59,8 +55,14 @@ function printUserNav(){
 
 
 }
+ function loginMove(){
+var user =  miStorage.getItem("keyUser");
  
- 
+if(user == null) {
+    window.location.replace('login.html');
+}
+ }
+
 function deleteUser(){
   localStorage.removeItem("keyUser");
   localStorage.removeItem("keyEmail");
@@ -76,5 +78,5 @@ function deleteUser(){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("printUser").innerHTML =  miStorage.getItem("keyUser");
-  
+  loginMove();
   });
