@@ -37,6 +37,7 @@ function guardarDatos(){
     
     mostrarDatos();
 }
+  
 
 function mostrarDatos(){
 data = miStorage.getItem("keyData");
